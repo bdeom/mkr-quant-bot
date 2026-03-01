@@ -1,0 +1,40 @@
+name: MKR Daily Quant Bot
+
+on:
+  schedule:
+    # Runs at 08:00 UTC every single day
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Allows you to click "Run workflow" manually to test it
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Allows the bot to push code to your repo
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt pymoo
+
+      - name: Run Backend Engine (Data, Optimization, Email)
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
+          MY_EMAIL: ${{ secrets.MY_EMAIL }}
+        run: python backend_engine.py
+
+      - name: Commit Updated JSON to GitHub
+        run: |
+          git config --local user.name "GitHub Action Bot"
+          git config --local user.email "action@github.com"
+          git add data.json
+          git commit -m "Automated Daily Rebalance" || echo "No changes to commit"
+          git push
