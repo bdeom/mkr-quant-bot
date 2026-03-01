@@ -3,6 +3,6 @@ pandas
 numpy
 ta
 scikit-learn
-ccxt
+yfinance
 pymoo
 plotly
