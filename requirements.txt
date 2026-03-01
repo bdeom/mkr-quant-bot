@@ -5,3 +5,4 @@ ta
 scikit-learn
 ccxt
 pymoo
+plotly
