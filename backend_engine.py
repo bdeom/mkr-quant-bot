@@ -154,3 +154,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    print(f"DEBUG: Successfully wrote {len(final_data)} assets to data.json")
