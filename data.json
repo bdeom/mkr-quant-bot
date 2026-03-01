@@ -1,0 +1,5 @@
+[
+  {"Asset": "LINK/USDT", "Weight": 0.26, "Forecast": 9.5, "Calmar": 3.12},
+  {"Asset": "BTC/USDT", "Weight": 0.22, "Forecast": 5.5, "Calmar": 4.20},
+  {"Asset": "ETH/USDT", "Weight": 0.18, "Forecast": 6.5, "Calmar": 2.85}
+]
