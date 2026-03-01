@@ -2,53 +2,34 @@ import streamlit as st
 import pandas as pd
 import json
 import os
-from datetime import datetime
+import plotly.express as px
 
-# Mobile-friendly config
 st.set_page_config(page_title="MKR Quant", page_icon="🚀", layout="centered")
 
-# CSS to hide Streamlit branding
-st.markdown("""
-    <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    </style>
-    """, unsafe_allow_html=True)
+# CSS to make it look like a native app
+st.markdown("<style>#MainMenu, footer, header {visibility: hidden;}</style>", unsafe_allow_html=True)
 
 st.title("🚀 MKR Quant AI")
 
-# --- DATA LOADING ---
-# Use a try-except and clear cache to ensure the LATEST data.json is read
-@st.cache_data(ttl=60) # Only cache for 60 seconds
-def load_data():
-    if os.path.exists('data.json'):
-        with open('data.json', 'r') as f:
-            return json.load(f)
-    return []
-
-raw_data = load_data()
-
-if raw_data:
-    df = pd.DataFrame(raw_data)
+if os.path.exists('data.json'):
+    with open('data.json', 'r') as f:
+        df = pd.DataFrame(json.load(f))
     
-    # 1. TABLE RENDERING
-    st.subheader("Optimal Portfolio Weights")
-    # Mapping columns to match backend output exactly
-    st.dataframe(
-        df.style.background_gradient(subset=['Forecast'], cmap='Greens')
-        .format({'Weight': '{:.1%}', 'Forecast': '+{:.2f}%', 'Profit Factor': '{:.2f}', 'Calmar': '{:.2f}'}),
-        use_container_width=True
-    )
-    
-    # 2. PIE CHART RENDERING (Allocation Map)
-    # Ensure columns 'Asset' and 'Weight' exist
-    st.subheader("Allocation Map")
-    if 'Asset' in df.columns and 'Weight' in df.columns:
-        st.pie_chart(data=df, names='Asset', values='Weight')
+    if not df.empty:
+        # --- 1. TABLE ---
+        st.subheader("Optimal Weights")
+        st.dataframe(df.style.background_gradient(subset=['Forecast'], cmap='Greens')
+                     .format({'Weight': '{:.1%}', 'Forecast': '+{:.1f}%', 'Profit Factor': '{:.2f}', 'Calmar': '{:.2f}'}),
+                     use_container_width=True)
+        
+        # --- 2. ALLOCATION MAP (Fixing the Error) ---
+        st.subheader("Allocation Map")
+        fig = px.pie(df, values='Weight', names='Asset', 
+                     hole=0.4, 
+                     color_discrete_sequence=px.colors.sequential.RdBu)
+        fig.update_layout(margin=dict(t=0, b=0, l=0, r=0), showlegend=True)
+        st.plotly_chart(fig, use_container_width=True)
     else:
-        st.warning("Data columns missing for chart.")
-
-    st.caption(f"Last sync: {datetime.now().strftime('%H:%M:%S UTC')}")
+        st.error("Data file is empty. Run GitHub Action.")
 else:
-    st.error("No data found. Please run the GitHub Action.")
+    st.error("data.json not found.")
