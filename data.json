@@ -1,12 +1,4 @@
 {
-    "last_update": "2026-03-01 18:52:59 UTC",
-    "portfolio": [
-        {
-            "Asset": "BNB/USDT",
-            "Weight": 1.0,
-            "Forecast": 4.02,
-            "Profit Factor": 1.71,
-            "Calmar": 3.4
-        }
-    ]
+    "last_update": "2026-03-01 19:03:30 UTC",
+    "portfolio": []
 }
