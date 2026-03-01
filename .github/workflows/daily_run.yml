@@ -31,10 +31,12 @@ jobs:
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
         run: python backend_engine.py
 
-      - name: Commit Updated JSON to GitHub
+      - name: Commit and Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.name "GitHub Action Bot"
-          git config --global user.email "action@github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json
-          git commit -m "Automated Daily Rebalance" || echo "No changes to commit"
-          git push origin HEAD:main
+          git commit -m "Update Portfolio Data" || exit 0
+          git push
