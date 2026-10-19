@@ -1,69 +1,69 @@
 {
-    "last_update": "2026-10-18 12:25:02 UTC",
+    "last_update": "2026-10-19 15:14:48 UTC",
     "portfolio": [
         {
-            "Asset": "BNB/USDT",
+            "Asset": "DOT/USDT",
             "Side": "LONG",
-            "Weight": 0.168,
-            "Forecast": 15.88,
-            "Profit Factor": 2.59,
-            "Calmar": 2.68
+            "Weight": 0.1628,
+            "Forecast": 22.0,
+            "Profit Factor": 2.86,
+            "Calmar": 1.68
         },
         {
             "Asset": "BTC/USDT",
-            "Side": "LONG",
-            "Weight": 0.1668,
-            "Forecast": 15.77,
-            "Profit Factor": 2.5,
-            "Calmar": 2.4
-        },
-        {
-            "Asset": "SOL/USDT",
-            "Side": "LONG",
-            "Weight": 0.1628,
-            "Forecast": 15.39,
-            "Profit Factor": 2.78,
-            "Calmar": 3.4
-        },
-        {
-            "Asset": "ADA/USDT",
-            "Side": "LONG",
-            "Weight": 0.1334,
-            "Forecast": 12.61,
+            "Side": "SHORT",
+            "Weight": 0.1374,
+            "Forecast": 18.56,
             "Profit Factor": 2.46,
-            "Calmar": 3.4
+            "Calmar": 1.2
         },
         {
-            "Asset": "ETH/USDT",
-            "Side": "LONG",
-            "Weight": 0.1124,
-            "Forecast": 10.62,
-            "Profit Factor": 2.17,
-            "Calmar": 3.16
+            "Asset": "AVAX/USDT",
+            "Side": "SHORT",
+            "Weight": 0.1227,
+            "Forecast": 16.58,
+            "Profit Factor": 2.74,
+            "Calmar": 2.92
         },
         {
-            "Asset": "XRP/USDT",
+            "Asset": "BNB/USDT",
             "Side": "LONG",
-            "Weight": 0.0946,
-            "Forecast": 8.94,
-            "Profit Factor": 2.14,
-            "Calmar": 3.8
+            "Weight": 0.1194,
+            "Forecast": 16.14,
+            "Profit Factor": 2.32,
+            "Calmar": 1.48
         },
         {
             "Asset": "LINK/USDT",
-            "Side": "LONG",
-            "Weight": 0.091,
-            "Forecast": 8.6,
-            "Profit Factor": 2.08,
-            "Calmar": 3.76
+            "Side": "SHORT",
+            "Weight": 0.1178,
+            "Forecast": 15.92,
+            "Profit Factor": 2.41,
+            "Calmar": 1.96
         },
         {
-            "Asset": "FET/USDT",
-            "Side": "LONG",
-            "Weight": 0.071,
-            "Forecast": 6.71,
-            "Profit Factor": 1.86,
-            "Calmar": 3.84
+            "Asset": "ADA/USDT",
+            "Side": "SHORT",
+            "Weight": 0.1149,
+            "Forecast": 15.52,
+            "Profit Factor": 2.42,
+            "Calmar": 2.16
+        },
+        {
+            "Asset": "NEAR/USDT",
+            "Side": "SHORT",
+            "Weight": 0.1131,
+            "Forecast": 15.28,
+            "Profit Factor": 2.4,
+            "Calmar": 2.2
+        },
+        {
+            "Asset": "ETH/USDT",
+            "Side": "SHORT",
+            "Weight": 0.1119,
+            "Forecast": 15.12,
+            "Profit Factor": 2.27,
+            "Calmar": 1.64
         }
     ]
 }
